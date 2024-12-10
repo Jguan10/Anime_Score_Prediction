@@ -280,7 +280,6 @@ if st.button('Get Predictions', key = 'Predicting'):
     st.image(img)
     st.write(f"Title: {df_data.iloc[0]['title']}")
     st.write(f"Alt Name: {df_data.iloc[0]['english']}")
-    st.write(f"Description: {df_data.iloc[0]['synopsis']}")
     st.write(f"Genres: {df_data.iloc[0]['genres']}")
     st.write(f"Studios: {df_data.iloc[0]['studios']}")
     st.write(f"Producers: {df_data.iloc[0]['producers']}")
