@@ -319,3 +319,7 @@ if st.button('Get Predictions', key = 'Predicting'):
 
     if 'type' in df_data.columns and pd.notnull(df_data.iloc[0]['type']):
         st.write(f"Type: {df_data.iloc[0]['type']}")
+    
+    st.write(f"Predicted Score: {y_pred_score}")
+    st.write(f"Predicted Popularity: {y_pred_pop}")
+    st.write(f"Predicted Rank: {y_pred_rank}")
