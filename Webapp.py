@@ -296,26 +296,26 @@ if st.button('Get Predictions', key = 'Predicting'):
         img = get_image(url)
 
     st.image(img)
-    if pd.notnull(df_data.iloc[0]['title']):
+    if 'title' in df_data.columns and pd.notnull(df_data.iloc[0]['title']):
         st.write(f"Title: {df_data.iloc[0]['title']}")
 
-    if pd.notnull(df_data.iloc[0]['english']):
+    if 'english' in df_data.columns and pd.notnull(df_data.iloc[0]['english']):
         st.write(f"Alt Name: {df_data.iloc[0]['english']}")
 
-    if pd.notnull(df_data.iloc[0]['genres']):
+    if 'genres' in df_data.columns and pd.notnull(df_data.iloc[0]['genres']):
         st.write(f"Genres: {df_data.iloc[0]['genres']}")
 
-    if pd.notnull(df_data.iloc[0]['studios']):
+    if 'studios' in df_data.columns and pd.notnull(df_data.iloc[0]['studios']):
         st.write(f"Studios: {df_data.iloc[0]['studios']}")
 
-    if pd.notnull(df_data.iloc[0]['producers']):
+    if 'producers' in df_data.columns and pd.notnull(df_data.iloc[0]['producers']):
         st.write(f"Producers: {df_data.iloc[0]['producers']}")
 
-    if pd.notnull(df_data.iloc[0]['episodes']):
+    if 'episodes' in df_data.columns and pd.notnull(df_data.iloc[0]['episodes']):
         st.write(f"Episodes: {df_data.iloc[0]['episodes']}")
 
-    if pd.notnull(df_data.iloc[0]['source']):
+    if 'source' in df_data.columns and pd.notnull(df_data.iloc[0]['source']):
         st.write(f"Source: {df_data.iloc[0]['source']}")
 
-    if pd.notnull(df_data.iloc[0]['type']):
+    if 'type' in df_data.columns and pd.notnull(df_data.iloc[0]['type']):
         st.write(f"Type: {df_data.iloc[0]['type']}")
