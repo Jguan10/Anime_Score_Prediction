@@ -18,7 +18,8 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 import time
 
 
@@ -231,9 +232,14 @@ def process_features(X_test):
     return X_test
 
 def get_image(url):
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")  # Run in headless mode
-    driver = webdriver.Chrome(options=options)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
+    service = Service("/path/to/chromedriver")
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
     try:
         driver.get(url)
