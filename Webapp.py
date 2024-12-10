@@ -24,6 +24,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 import time
 
+st.write("### Anime Popularity Predictor")
 
 with st.spinner('Loading models...'):
     with open('Models/tfidf_vectorizer.pkl', 'rb') as file:
