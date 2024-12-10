@@ -296,14 +296,26 @@ if st.button('Get Predictions', key = 'Predicting'):
         img = get_image(url)
 
     st.image(img)
-    st.write(f"Title: {df_data.iloc[0]['title']}")
-    st.write(f"Alt Name: {df_data.iloc[0]['english']}")
-    st.write(f"Genres: {df_data.iloc[0]['genres']}")
-    st.write(f"Studios: {df_data.iloc[0]['studios']}")
-    st.write(f"Producers: {df_data.iloc[0]['producers']}")
-    st.write(f"Episodes: {df_data.iloc[0]['episodes']}")
-    st.write(f"Source: {df_data.iloc[0]['source']}")
-    st.write(f"Type: {df_data.iloc[0]['type']}")
-    st.write(f"Predicted Score: {y_pred_score}")
-    st.write(f"Predicted Popularity: {y_pred_pop}")
-    st.write(f"Predicted Rank: {y_pred_rank}")
+    if pd.notnull(df_data.iloc[0]['title']):
+        st.write(f"Title: {df_data.iloc[0]['title']}")
+
+    if pd.notnull(df_data.iloc[0]['english']):
+        st.write(f"Alt Name: {df_data.iloc[0]['english']}")
+
+    if pd.notnull(df_data.iloc[0]['genres']):
+        st.write(f"Genres: {df_data.iloc[0]['genres']}")
+
+    if pd.notnull(df_data.iloc[0]['studios']):
+        st.write(f"Studios: {df_data.iloc[0]['studios']}")
+
+    if pd.notnull(df_data.iloc[0]['producers']):
+        st.write(f"Producers: {df_data.iloc[0]['producers']}")
+
+    if pd.notnull(df_data.iloc[0]['episodes']):
+        st.write(f"Episodes: {df_data.iloc[0]['episodes']}")
+
+    if pd.notnull(df_data.iloc[0]['source']):
+        st.write(f"Source: {df_data.iloc[0]['source']}")
+
+    if pd.notnull(df_data.iloc[0]['type']):
+        st.write(f"Type: {df_data.iloc[0]['type']}")
