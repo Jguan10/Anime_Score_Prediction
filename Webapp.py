@@ -26,8 +26,6 @@ import time
 
 
 with st.spinner('Loading models...'):
-    model = keras.saving.load_model('Models/prediction_model.keras')
-
     with open('Models/tfidf_vectorizer.pkl', 'rb') as file:
         vectorizer = pickle.load(file)
 
@@ -271,6 +269,9 @@ anime_id = st.text_input("Enter Anime ID")
 st.write("Please Enter One ID Only")
 
 if st.button('Get Predictions', key = 'Predicting'):
+    with st.spinner('Loading models...'):
+        model = keras.saving.load_model('Models/prediction_model.keras')
+
     with st.spinner('Scraping...'):
         anime_data = scrape_all(anime_id)
 
