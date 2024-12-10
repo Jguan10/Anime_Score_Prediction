@@ -273,8 +273,9 @@ if st.button('Get Predictions', key = 'Predicting'):
     y_pred_rank = y_pred[2].argmax(axis=1)
     y_pred_rank = rank_encoder.inverse_transform(y_pred_rank)
 
-    url = f"https://myanimelist.net/anime/{anime_id}"
-    img = get_image(url)
+    with st.spinner('Digging Further...'):
+        url = f"https://myanimelist.net/anime/{anime_id}"
+        img = get_image(url)
 
     st.image(img)
     st.write(f"Title: {df_data.iloc[0]['title']}")
