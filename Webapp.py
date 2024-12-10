@@ -18,8 +18,10 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
 import time
 
 
@@ -231,29 +233,36 @@ def process_features(X_test):
 
     return X_test
 
-def get_image(url):
+def get_driver():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
 
-    service = Service("/path/to/chromedriver")
+    service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
+
+def get_image(url):
+    driver = get_driver()
 
     try:
         driver.get(url)
-        time.sleep(5)  # Allow time for page to load
+        time.sleep(5)  # Allow time for the page to load
 
-        # Parse page source with BeautifulSoup
+        # Parse the page source with BeautifulSoup
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         # Find all matching image URLs
         images = soup.find_all("img", src=lambda src: src and src.startswith("https://cdn.myanimelist.net/images/anime"))
         image_urls = [img["src"] for img in images]
 
-        # Print out the list of image URLs
-        return image_urls[0]
+        # Return the first image URL found (or an appropriate message if none are found)
+        if image_urls:
+            return image_urls[0]
+        else:
+            return "No matching images found."
 
     finally:
         driver.quit()

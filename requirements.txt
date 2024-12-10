@@ -8,3 +8,4 @@ streamlit==1.40.0
 keras==3.7.0
 selenium==4.27.1
 tensorflow==2.18.0
+webdriver-manager
