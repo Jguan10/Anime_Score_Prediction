@@ -25,8 +25,8 @@ from webdriver_manager.core.os_manager import ChromeType
 import time
 
 st.write("### Anime Popularity Predictor")
-url = "https://github.com/Jguan10/Anime_Score_Prediction"
-st.markdown("Check out the Github [here](%s)!" % url)
+surl = "https://github.com/Jguan10/Anime_Score_Prediction"
+st.markdown("Check out the Github [here](%s)!" % surl)
 
 with st.spinner('Loading models...'):
     with open('Models/tfidf_vectorizer.pkl', 'rb') as file:
@@ -270,6 +270,8 @@ def get_image(url):
 
 anime_id = st.text_input("Enter Anime ID")
 st.write("Please Enter One ID Only")
+surl = "https://myanimelist.net/"
+st.markdown("Anime ID is found on [MAL](%s) by clicking into an anime and checking the url!" % surl)
 
 if st.button('Get Predictions', key = 'Predicting'):
     with st.spinner('Loading models...'):
