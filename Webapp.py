@@ -25,6 +25,8 @@ from webdriver_manager.core.os_manager import ChromeType
 import time
 
 st.write("### Anime Popularity Predictor")
+url = "https://github.com/Jguan10/Anime_Score_Prediction"
+st.markdown("Check out the Github [here](%s)!" % url)
 
 with st.spinner('Loading models...'):
     with open('Models/tfidf_vectorizer.pkl', 'rb') as file:
